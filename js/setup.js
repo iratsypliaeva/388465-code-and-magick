@@ -85,14 +85,28 @@ var onPopupEscPress = function (evt) {
     closePopup();
   }
 };
+
+var startCoords = {
+  x: setup.offsetTop,
+  y: setup.offsetLeft
+};
+console.log(JSON.stringify(startCoords));
+
 var openPopup = function () {
   setup.classList.remove('hidden');
-
+  startCoords = {
+    x: setup.offsetTop,
+    y: setup.offsetLeft
+  };
+  console.log(JSON.stringify(startCoords));
   document.addEventListener('keydown', onPopupEscPress);
 };
 
 var closePopup = function () {
   setup.classList.add('hidden');
+  console.log(JSON.stringify(startCoords));
+  setup.style.top = startCoords.x;
+  setup.style.left = startCoords.y;
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
@@ -165,30 +179,3 @@ var setupFireballWrap = document.querySelector('.setup-fireball-wrap');
 setupFireballWrap.addEventListener('click', function () {
   setupFireballWrap.style.backgroundColor = randomValue(FIREBALL_WRAP_COLOR);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
