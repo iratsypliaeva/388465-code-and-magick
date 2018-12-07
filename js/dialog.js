@@ -52,4 +52,4 @@
     document.addEventListener('mouseup', onMouseUp);
   });
 
-}) ();
+})();
